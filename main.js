@@ -1,8 +1,8 @@
 noseX=0;
 noseY=0;
 difference = 0;
-rightWrist_x = 0;
-leftWrist_x = 0;
+rightWristX = 0;
+leftWristX = 0;
 function preload(){
 
 }
@@ -19,10 +19,10 @@ function modelLoaded(){
 }
 function draw() {
 background('#969A97');
-textSize(18);
+textSize(difference);
 fill('#F90093');
 stroke('#F90093');
-text("Maya", 200, 300);
+text("Maya", 40, 300);
 }
 function gotPoses(results){
     if(results.length > 0){
@@ -30,12 +30,11 @@ function gotPoses(results){
         noseX = results[0].pose.nose.x;
         noseY = results[0].pose.nose.y;
         console.log("noseX = "+ noseX + " noseY = "+ noseY);
-        leftWrist_x = results[0].pose.leftWrist.x;
-        rightWrist_x = results[0].pose.rightWrist.x;
-       difference = floor(leftWrist_x - rightWrist_x);
-
-        console.log("leftWristX =" + leftWrist_x + " rightWristX = "+ rightWrist_x + " difference = "+ difference);
-        textSize(difference);
+        leftWristX = results[0].pose.leftWrist.x;
+        rightWristX = results[0].pose.rightWrist.x;
+        difference = floor(leftWristX - rightWristX);
+        console.log("leftWristX =" + leftWristX + " rightWristX = "+ rightWristX + " difference = "+ difference);
+        textSize(floor(leftWristX-rightWristX));
         
    }
 }
